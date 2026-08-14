@@ -1,17 +1,16 @@
 import NavbarPrueba from './components/NavbarPrueba';
-import GlassButton from './components/GlassButton';
-import Navbar from './components/Navbar';
+import Hero from './components/Hero';
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-primary">   
-        {/* Tu Cabecera */}
-        <Navbar />
+    <div className="min-h-screen flex flex-col bg-background text-text-main selection:bg-primary/30">   
+        {/* Tu barra de navegación superior */}
+        <NavbarPrueba/>
         
-        {/* Tu Contenido Principal */}
-        <main className="flex justify-center items-center p-20 mt-10">
-          <GlassButton />
+        {/* El contenido principal de tu página */}
+        <main className="flex-1 flex items-center">
+          <Hero />
         </main>
     </div>
-  )
+  );
 }
