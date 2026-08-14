@@ -11,13 +11,13 @@ export default function NavbarPrueba() {
                     </a>
 
                     <nav className="hidden md:flex items-center gap-12 text-sm text-white/80">
-                        <a href="#" className="hover:text-text-hover transition font-geist">
+                        <a href="#inicio" className="hover:text-text-hover transition font-geist">
                             Inicio
                         </a>
-                        <a href="#" className="hover:text-text-hover transition font-geist">
+                        <a href="#sobremi" className="hover:text-text-hover transition font-geist">
                             Sobre mí
                         </a>
-                        <a href="#" className="hover:text-text-hover transition font-geist">
+                        <a href="#proyectos" className="hover:text-text-hover transition font-geist">
                             Proyectos
                         </a>
                     </nav>

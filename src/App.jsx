@@ -11,6 +11,7 @@ export default function App() {
         <main className="flex-1 flex items-center">
           <Hero />
         </main>
+        <Hero />
     </div>
   );
 }

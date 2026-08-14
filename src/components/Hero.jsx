@@ -59,7 +59,7 @@ export default function Hero() {
             {/* Redes Sociales (GitHub y LinkedIn) */}
             <div className="mt-12 flex items-center gap-6 border-t border-white/5 pt-8 w-full max-w-md">
                 <a
-                href="https://github.com/TuUsuario"
+                href="https://github.com/Niik1"
                 target="_blank"
                 rel="noreferrer"
                 className="text-text-muted hover:text-text-main transition-colors"
@@ -82,7 +82,7 @@ export default function Hero() {
                 </a>
 
                 <a
-                href="https://linkedin.com/in/TuUsuario"
+                href="https://linkedin.com/in/nikcey-bada-gutierrez-018972258"
                 target="_blank"
                 rel="noreferrer"
                 className="text-text-muted hover:text-text-main transition-colors"
