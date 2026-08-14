@@ -30,6 +30,7 @@ export default function NavbarPrueba() {
                         </a>
                     </div>
                 </div>
+                    <span className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-linea/80 from-transparent via-venus-pink/100 to-transparent"></span>
             </div>
         </header>
     );
