@@ -1,6 +1,6 @@
 export default function Hero() {
     return (
-    <section className="relative w-full max-w-7xl mx-auto px-6 lg:px-8 py-12 lg:py-16">
+    <section id="inicio" className="relative w-full max-w-7xl mx-auto px-6 lg:px-8 py-12 lg:py-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             {/* Lado Izquierdo: Textos y Botones */}
             <div className="flex flex-col items-start text-left">
@@ -16,7 +16,7 @@ export default function Hero() {
                 </h1>
 
                 {/* Subtítulo / Propuesta de Valor */}
-                <p className="mt-6 text-text-muted text-lg max-w-lg leading-relaxed">
+                <p className="mt-6 text-text-muted/70 text-lg max-w-lg leading-relaxed ">
                 Transformo datos complejos en historias claras que impulsan el
                 crecimiento de tu negocio. A través de la automatización de
                 procesos, elimino tareas repetitivas para resolver problemas reales
