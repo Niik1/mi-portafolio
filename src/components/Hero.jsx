@@ -6,7 +6,7 @@ export default function Hero() {
             <div className="flex flex-col items-start text-left">
                 {/* Etiqueta Superior */}
                 <span className="text-primary text-sm font-semibold tracking-[0.2em] uppercase mb-6">
-                Hola, soy Nikcey Bada
+                Hola, soy Nikcey Bada Gutierrez
                 </span>
 
                 {/* Título Principal */}
@@ -16,11 +16,9 @@ export default function Hero() {
                 </h1>
 
                 {/* Subtítulo / Propuesta de Valor */}
-                <p className="mt-6 text-text-muted/70 text-lg max-w-lg leading-relaxed ">
+                <p className="mt-6 text-text-muted/70 text-xl max-w-lg leading-relaxed ">
                 Transformo datos complejos en historias claras que impulsan el
-                crecimiento de tu negocio. A través de la automatización de
-                procesos, elimino tareas repetitivas para resolver problemas reales
-                y permitirte tomar decisiones estratégicas.
+                crecimiento de tu negocio.
                 </p>
 
             {/* Contenedor de Botones Principales */}

@@ -42,3 +42,16 @@
 ::-webkit-scrollbar-thumb:hover {
     background-color: var(--color-primary)
 }
+
+/*Animacion del loop de logos de herramientas*/
+
+@keyframes infinite-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+.animate-infinite-scroll {
+    animation: infinite-scroll 60s linear infinite;
+    /* El ancho debe ser suficiente para contener los elementos duplicados */
+    width: max-content;
+}

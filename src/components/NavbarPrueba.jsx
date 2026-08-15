@@ -17,8 +17,14 @@ export default function NavbarPrueba() {
                         <a href="#sobremi" className="hover:text-text-hover transition font-geist">
                             Sobre mí
                         </a>
+                        <a href="#experiencia" className="hover:text-text-hover transition font-geist">
+                            Experiencia
+                        </a>
                         <a href="#proyectos" className="hover:text-text-hover transition font-geist">
                             Proyectos
+                        </a>
+                        <a href="#certificados" className="hover:text-text-hover transition font-geist">
+                            Certificados
                         </a>
                     </nav>
 

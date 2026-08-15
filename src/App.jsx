@@ -1,5 +1,6 @@
 import NavbarPrueba from './components/NavbarPrueba';
 import Hero from './components/Hero';
+import About from './components/About';
 
 export default function App() {
   return (
@@ -9,9 +10,10 @@ export default function App() {
         
         {/* El contenido principal de tu página */}
         <main className="flex-1 flex items-center">
-          <Hero />
+          <Hero></Hero>
         </main>
-        <Hero />
+        <About></About>
+        
     </div>
   );
 }
