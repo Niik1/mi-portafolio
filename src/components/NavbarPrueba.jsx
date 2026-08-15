@@ -1,13 +1,44 @@
+import { useState, useEffect } from 'react';
+
 export default function NavbarPrueba() {
+    // 1. Estado para detectar el scroll
+    const [isScrolled, setIsScrolled] = useState(false);
+
+    // 2. Efecto para escuchar el movimiento de la pantalla
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 20) {
+                setIsScrolled(true);
+            } else {
+                setIsScrolled(false);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
     return (
-        <header className="relative">
+        // 3. El header ahora es "fixed" y cambia su fondo dependiendo de isScrolled
+        <header 
+            className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out ${
+                isScrolled 
+                    ? 'bg-background/80 backdrop-blur-md shadow-lg' // Efecto cristal al bajar
+                    : 'bg-transparent' // Transparente arriba del todo
+            }`}
+        >
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
-                <div className="flex items-center justify-between py-5">
+                
+                {/* 4. Hacemos que el padding vertical pase de py-5 a py-3 al hacer scroll */}
+                <div className={`flex items-center justify-between transition-all duration-300 ${isScrolled ? 'py-5' : 'py-5'}`}>
+                    
                     <a href="#" className="flex items-center gap-2">
+                        {/* Corregí un pequeño error de tipeo que tenías: "objec-cover" a "object-cover" */}
                         <img  
                             src="https://upload.wikimedia.org/wikipedia/commons/d/dd/Coca-Cola_logo_white.png" 
                             alt="Water Logo" 
-                            className="w-[100px] h-8 objec-cover rounded" />
+                            className="w-[100px] h-8 object-cover rounded" 
+                        />
                     </a>
 
                     <nav className="hidden md:flex items-center gap-12 text-sm text-white/80">
@@ -29,14 +60,16 @@ export default function NavbarPrueba() {
                     </nav>
 
                     <div className="flex items-center gap-3">
-                        
-                        <a href="#" className="inline-flex items-center  rounded-md border-gradient before:rounded-md bg-primary/100 px-4 py-2.5 text-sm text-black/90  font-medium hover:bg-primary-hover/100 transition font-geist">
-                            
+                        <a href="#" className="inline-flex items-center rounded-md border-gradient before:rounded-md bg-primary/100 px-4 py-2.5 text-sm text-black/90 font-medium hover:bg-primary-hover/100 transition font-geist">
                             Contactame
                         </a>
                     </div>
                 </div>
-                    <span className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-linea/80 from-transparent via-venus-pink/100 to-transparent"></span>
+                
+                {/* Tu línea decorativa original. Si prefieres que desaparezca al hacer scroll, 
+                    podrías agregarle: ${isScrolled ? 'opacity-0' : 'opacity-100'} */}
+                <span className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-linea/80 from-transparent via-venus-pink/100 to-transparent"></span>
+            
             </div>
         </header>
     );

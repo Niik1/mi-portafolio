@@ -4,15 +4,15 @@ import About from './components/About';
 
 export default function App() {
   return (
-    <div className="min-h-screen flex flex-col bg-background text-text-main selection:bg-primary/30">   
-        {/* Tu barra de navegación superior */}
-        <NavbarPrueba/>
+    <div className="bg-background text-text-main selection:bg-primary/30">   
         
-        {/* El contenido principal de tu página */}
-        <main className="flex-1 flex items-center">
-          <Hero></Hero>
-        </main>
-        <About></About>
+        <div className="min-h-screen flex flex-col">
+            <NavbarPrueba />
+            <main className="flex-1 flex items-center">
+              <Hero />
+            </main>
+        </div>       
+        <About />
         
     </div>
   );
