@@ -52,6 +52,5 @@
 
 .animate-infinite-scroll {
     animation: infinite-scroll 60s linear infinite;
-    /* El ancho debe ser suficiente para contener los elementos duplicados */
     width: max-content;
 }

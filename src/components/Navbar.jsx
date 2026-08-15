@@ -10,14 +10,12 @@ export default function Navbar() {
         }}
       >
         <div className="flex items-center justify-between">
-          {/* Tu Nombre / Logo */}
           <div className="flex items-center">
             <span className="text-lg font-semibold tracking-tight text-white font-sans">
               Nikcey Bada
             </span>
           </div>
 
-          {/* Enlaces de Navegación Personalizados */}
           <ul className="hidden md:flex items-center gap-1 text-sm font-medium text-white/60">
             <li>
               <a
@@ -53,7 +51,6 @@ export default function Navbar() {
             </li>
           </ul>
 
-          {/* Botones de Iconos */}
           <div className="flex items-center gap-2">
             <button
               className="bg-white/[0.02] hover:bg-white/10 p-2 rounded-full transition-all duration-300 border border-white/5 cursor-pointer"
@@ -99,7 +96,6 @@ export default function Navbar() {
                 <path d="M8 11h.01" />
                 <path d="M8 16h.01" />
               </svg>
-              {/* Le cambié el color de la notificación a esmeralda (bg-emerald-500) para que combine con tu diseño */}
               <span className="absolute -top-1 -right-1 w-4 h-4 bg-emerald-500 text-white text-xs rounded-full flex items-center justify-center font-medium font-sans">
                 1
               </span>

@@ -2,7 +2,6 @@ export default function GlassButton({ texto = "Watch demo" }) {
   return (
     <div className="inline-block group relative">
       <button className="group inline-flex min-w-[140px] cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:scale-105 border-gradient text-sm font-medium text-white/80 hover:text-white tracking-tight bg-white/5 backdrop-blur-xl rounded-full py-3 px-5 relative items-center justify-center gap-2">
-        {/* Ícono SVG de Play */}
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -20,10 +19,8 @@ export default function GlassButton({ texto = "Watch demo" }) {
           <circle cx="12" cy="12" r="10"></circle>
         </svg>
 
-        {/* Texto dinámico */}
         <span className="relative">{texto}</span>
 
-        {/* Línea inferior brillante (gradiente) */}
         <span
           aria-hidden="true"
           className="transition-all duration-300 group-hover:opacity-80 opacity-20 w-[70%] h-[1px] rounded-full absolute bottom-0 left-1/2 -translate-x-1/2"
@@ -34,7 +31,6 @@ export default function GlassButton({ texto = "Watch demo" }) {
         ></span>
       </button>
 
-      {/* Sombra/Resplandor exterior que aparece al pasar el mouse */}
       <span
         className="pointer-events-none absolute -bottom-3 left-1/2 z-0 h-6 w-44 -translate-x-1/2 rounded-full opacity-0 transition-opacity duration-300 ease-out group-hover:opacity-100"
         style={{

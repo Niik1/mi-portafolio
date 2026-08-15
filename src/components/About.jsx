@@ -17,10 +17,7 @@ const techStack = [
 
 export default function About() {
 
-    // 2. El truco del loop perfecto:
-    // Repetimos tu lista base 3 veces para crear un "bloque" lo suficientemente largo para monitores grandes.
     const bloque = [...techStack, ...techStack, ...techStack];
-    // Luego, unimos dos bloques idénticos para que el desplazamiento de -50% coincida milimétricamente.
     const carruselInfinito = [...bloque, ...bloque];
 
     return (
@@ -28,13 +25,8 @@ export default function About() {
         id="sobremi"
         className="w-full max-w-7xl mx-auto px-6 lg:px-8 py-24"
         >
-        {/* =========================================
-            PARTE SUPERIOR: Foto y Texto (Opción A)
-            ========================================= */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            {/* Lado Izquierdo: Fotografía Limpia */}
             <div className="relative w-full aspect-square max-w-md mx-auto lg:mx-0 rounded-2xl overflow-hidden bg-surface border border-white/5">
-                {/* Reemplaza el src con tu foto real */}
                 <img
             src="https://i.pinimg.com/736x/fe/2f/40/fe2f4092648b860f699dde4405112771.jpg"
             alt="Nikcey Bada trabajando"
@@ -42,7 +34,6 @@ export default function About() {
                 />
             </div>
 
-            {/* Lado Derecho: Información */}
             <div className="flex flex-col text-left">
                 <span className="text-primary text-sm font-semibold tracking-wider uppercase mb-4">
                 01. Sobre Mí
@@ -67,8 +58,6 @@ export default function About() {
                 la mejora.
                 </p>
             </div>
-
-            {/* Subtítulo y Checks de Habilidades Blandas */}
             <div className="mt-10">
                 <h3 className="text-text-hover font-semibold text-xl mb-4">
                 Habilidades Blandas
@@ -84,7 +73,6 @@ export default function About() {
                     key={index}
                     className="flex items-center gap-3 text-text-muted"
                     >
-                        {/* Icono de Check Esmeralda */}
                         <svg
                         className="w-5 h-5 text-primary flex-shrink-0"
                         viewBox="0 0 20 20"
@@ -103,10 +91,6 @@ export default function About() {
             </div>
             </div>
         </div>
-
-      {/* =========================================
-          PARTE INFERIOR: Loop de Tecnologías
-          ========================================= */}
       <div className="mt-8 pt-8 border-t border-white/5 overflow-hidden">
         <h3 className="text-center text-text-hover font-medium tracking-widest uppercase mb-12">
         Tecnologías y Habilidades Técnicas
@@ -116,8 +100,6 @@ export default function About() {
         
         <div className="absolute top-0 left-0 w-24 h-full bg-gradient-to-r from-background to-transparent z-10"></div>
         <div className="absolute top-0 right-0 w-24 h-full bg-gradient-to-l from-background to-transparent z-10"></div>
-
-        {/* Cambiamos techStack.map por carruselInfinito.map y aseguramos el w-max */}
         <div className="flex w-max gap-16 items-center animate-infinite-scroll group-hover:[animation-play-state:paused]">
           {carruselInfinito.map((tech, index) => (
             <div key={index} className="flex flex-col items-center gap-3 min-w-max opacity-50 hover:opacity-100 transition-opacity grayscale hover:grayscale-0">
