@@ -9,7 +9,7 @@
 
     /*Colores de Fondo - Modo Oscuro*/
     --color-background: #101011;
-    --color-surface: #0a0b14;
+    --color-surface: #141414;
     --color-surface-hover: #1c1f36;
     /*Colores de fondo - Modo Claro*/
 
@@ -22,7 +22,14 @@
 
 }
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+/* ✨ EL CÓDIGO ANTI-SALTOS ✨ */
+html {
+  scrollbar-gutter: stable;
+}
 
 ::-webkit-scrollbar {
     width: 12px;

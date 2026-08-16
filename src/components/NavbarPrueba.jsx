@@ -34,7 +34,7 @@ export default function NavbarPrueba() {
                         />
                     </a>
                     <nav className="hidden md:flex items-center gap-12 text-sm text-white/80">
-                        <a href="#inicio" className="hover:text-text-hover transition font-geist">
+                        <a href="#" className="hover:text-text-hover transition font-geist">
                             Inicio
                         </a>
                         <a href="#sobremi" className="hover:text-text-hover transition font-geist">

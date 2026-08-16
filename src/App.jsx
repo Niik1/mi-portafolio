@@ -2,6 +2,8 @@ import NavbarPrueba from './components/NavbarPrueba';
 import Hero from './components/Hero';
 import About from './components/About';
 import Experiencia from './components/Experiencia';
+import Proyectos from './components/Proyectos';
+import Certificados from './components/Certificados';
 
 export default function App() {
   return (
@@ -14,6 +16,8 @@ export default function App() {
         </div>       
         <About/>
         <Experiencia/>
+        <Proyectos></Proyectos>
+        <Certificados></Certificados>
     </div>
   );
 }
