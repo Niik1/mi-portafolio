@@ -4,24 +4,24 @@ import React, { useState, useEffect } from 'react';
 const certificados = [
   {
     id: 1,
-    fecha: "Mayo 2026",
+    fecha: "Diciembre 2025",
     titulo: "Bachiller en Ingeniería de Sistemas Computacionales",
-    institucion: "Universidad / Institución", 
-    imagen: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=1000&auto=format&fit=crop"
+    institucion: "Universidad Privada del Norte", 
+    imagen: "/public/BACHILLER.png"
   },
   {
     id: 2,
-    fecha: "Enero 2026",
-    titulo: "Evaluación y Control de Obligaciones Tributarias",
-    institucion: "SUNAT",
-    imagen: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=1000&auto=format&fit=crop"
+    fecha: "Julio 2025",
+    titulo: "CCNAv7: Switching, Routing, and Wireless Essentials",
+    institucion: "Cisco Networking Academy program",
+    imagen: "/public/CCNAv7switches.png"
   },
   {
     id: 3,
-    fecha: "Diciembre 2025",
-    titulo: "Google Data Analytics Professional Certificate",
-    institucion: "Coursera",
-    imagen: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop"
+    fecha: "Diciembre 2023",
+    titulo: "CCNAv7: Introduction to Networks",
+    institucion: "Cisco Networking Academy program",
+    imagen: "/public/CCNAv7.png"
   }
 ];
 
