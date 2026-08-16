@@ -164,13 +164,12 @@ const ProjectModal = ({ proyecto, onClose }) => {
         </button>
 
         {/* Imagen: Delgada en celular (h-36), amplia en PC (h-72) */}
-        <div className="w-full h-36 sm:h-72 relative shrink-0">
+        <div className="w-full h-60 sm:h-90 relative shrink-0">
           <img 
             src={proyecto.imagen} 
             alt={proyecto.titulo} 
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent"></div>
         </div>
 
         {/* Contenedor de texto optimizado */}

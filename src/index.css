@@ -29,6 +29,11 @@
 /* ✨ EL CÓDIGO ANTI-SALTOS ✨ */
 html {
   scrollbar-gutter: stable;
+  /* ✨ NUEVO: Activa la animación suave de navegación */
+  scroll-behavior: smooth; 
+
+  /* Aumenta este valor. Prueba con 8rem, 10rem o 120px hasta que quede como en tu foto */
+  scroll-padding-top: 20px;
 }
 
 ::-webkit-scrollbar {
