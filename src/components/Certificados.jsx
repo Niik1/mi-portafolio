@@ -1,36 +1,37 @@
 import React, { useState, useEffect } from 'react';
 
-// 1. Base de datos de Certificados
+import imgBachiller from '../assets/Certificado_Bachiller.webp';
+import imgCCNASwitches from '../assets/Certificado_CCNA.webp';
+import imgCCNA from '../assets/Certificado_CCNAv7.webp';
+
 const certificados = [
   {
     id: 1,
     fecha: "Diciembre 2025",
     titulo: "Bachiller en Ingeniería de Sistemas Computacionales",
     institucion: "Universidad Privada del Norte", 
-    imagen: "/public/BACHILLER.png"
+    imagen: imgBachiller
   },
   {
     id: 2,
-    fecha: "Julio 2025",
+    fecha: "Julio 2024",
     titulo: "CCNAv7: Switching, Routing, and Wireless Essentials",
     institucion: "Cisco Networking Academy program",
-    imagen: "/public/CCNAv7switches.png"
+    imagen: imgCCNASwitches
   },
   {
     id: 3,
     fecha: "Diciembre 2023",
     titulo: "CCNAv7: Introduction to Networks",
     institucion: "Cisco Networking Academy program",
-    imagen: "/public/CCNAv7.png"
+    imagen: imgCCNA
   }
 ];
 
-// 2. Componente de la Ventana Modal Minimalista (Cinematográfica)
 const CertModal = ({ cert, onClose }) => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Solo ocultamos el scroll, nada de matemáticas.
     document.body.style.overflow = 'hidden';
     requestAnimationFrame(() => setIsVisible(true));
     
@@ -55,10 +56,9 @@ const CertModal = ({ cert, onClose }) => {
         className={`relative transition-all duration-500 ease-out transform ${isVisible ? 'scale-100 translate-y-0' : 'scale-95 translate-y-4'}`}
         onClick={(e) => e.stopPropagation()} 
       >
-        {/* Contenedor 'inline-block' para que abrace exactamente el tamaño de la imagen */}
+
         <div className="relative inline-block">
           
-          {/* Botón de cerrar (X) idéntico al de Proyectos, posicionado adentro */}
           <button 
             onClick={handleClose}
             className="absolute top-3 right-3 sm:top-4 sm:right-4 z-50 w-8 h-8 flex items-center justify-center rounded-full bg-black/50 text-white/70 hover:text-white hover:bg-black transition-colors"
@@ -68,11 +68,12 @@ const CertModal = ({ cert, onClose }) => {
             </svg>
           </button>
 
-          {/* La imagen pura */}
           <img 
             src={cert.imagen} 
             alt={cert.titulo} 
-            className="w-auto max-w-full max-h-[85vh] object-contain rounded-xl shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/10"
+            onContextMenu={(e) => e.preventDefault()}
+            draggable="false"
+            className="w-auto max-w-full max-h-[85vh] object-contain rounded-xl shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/10 select-none"
           />
         </div>
       </div>
@@ -80,14 +81,12 @@ const CertModal = ({ cert, onClose }) => {
   );
 };
 
-// 3. Componente Principal de Certificados
 export default function Certificados() {
   const [selectedCert, setSelectedCert] = useState(null);
 
   return (
     <section id="certificados" className="w-full max-w-7xl mx-auto px-6 lg:px-8 py-24 relative overflow-hidden">
       
-      {/* Encabezado */}
       <div className="mb-16 relative z-10">
         <span className="text-primary text-sm font-semibold tracking-wider uppercase mb-4 block">
           04. Credenciales
@@ -97,35 +96,28 @@ export default function Certificados() {
         </h2>
       </div>
 
-      {/* Contenedor de la Línea de Tiempo 20/80 */}
       <div className="relative w-full">
         
-        {/* La línea central tenue (Visible solo en PC para no ensuciar el celular) */}
         <div className="absolute left-[20%] top-0 bottom-0 w-[1px] bg-white/5 hidden md:block z-0"></div>
 
         <div className="flex flex-col gap-4">
           {certificados.map((cert) => (
             
-            // LA FILA COMPLETA (group)
             <div 
               key={cert.id} 
               className="relative flex flex-col md:flex-row w-full rounded-2xl p-4 md:p-6 transition-colors duration-300 hover:bg-white/[0.02] group"
             >
               
-              {/* Eslabón luminoso (El punto amarillo en la línea) */}
               <div className="absolute left-[20%] top-10 -translate-x-1/2 w-2.5 h-2.5 rounded-full bg-white/20 transition-all duration-300 group-hover:bg-primary group-hover:shadow-[0_0_12px_#ffef15] hidden md:block z-10"></div>
 
-              {/* COLUMNA IZQUIERDA (20%) - Fecha */}
               <div className="md:w-[20%] shrink-0 pb-3 md:pb-0 md:pt-1.5 flex items-start">
                 <span className="text-white/40 font-mono text-sm font-medium tracking-wide group-hover:text-primary/80 transition-colors duration-300">
                   {cert.fecha}
                 </span>
               </div>
 
-              {/* COLUMNA DERECHA (80%) - Contenido */}
               <div className="md:w-[80%] md:pl-12 flex flex-col items-start transition-transform duration-500 ease-out group-hover:translate-x-2 relative z-10">
                 
-                {/* Textos */}
                 <h2 className="text-xl md:text-1xl  font-mono text-text-main  mb-1 group-hover:text-white transition-colors duration-300">
                   {cert.titulo}
                 </h2>
@@ -133,8 +125,6 @@ export default function Certificados() {
                   {cert.institucion}
                 </p>
 
-                {/* MINIATURA DEL CERTIFICADO (group/thumb) */}
-                {/* Le damos su propio 'group' para controlar el hover independiente */}
                 <div 
                   onClick={() => setSelectedCert(cert)}
                   className="relative w-40 h-28 md:w-39 md:h-24 rounded-lg overflow-hidden border border-white/10 cursor-pointer shadow-lg group/thumb bg-surface"
@@ -142,13 +132,13 @@ export default function Certificados() {
                   <img 
                     src={cert.imagen} 
                     alt="Miniatura" 
-                    className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover/thumb:scale-110"
+                    loading="lazy"
+                    onContextMenu={(e) => e.preventDefault()}
+                    draggable="false"
+                    className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover/thumb:scale-110 select-none"
                   />
                   
-                  {/* Overlay oscuro y lupa (Aparece exactamente al pasar sobre la imagen) */}
                   <div className="absolute inset-0 bg-black/50 opacity-0 group-hover/thumb:opacity-100 flex items-center justify-center transition-opacity duration-300 backdrop-blur-[2px]">
-                    
-                    {/* Botoncito central de expandir */}
                     <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-black transform scale-75 group-hover/thumb:scale-100 transition-transform duration-300 delay-75">
                       <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
@@ -158,13 +148,11 @@ export default function Certificados() {
                 </div>
 
               </div>
-
             </div>
           ))}
         </div>
       </div>
 
-{/* Renderizado Condicional del Modal Minimalista */}
       {selectedCert && (
         <CertModal 
           cert={selectedCert} 

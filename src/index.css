@@ -19,21 +19,16 @@
     --color-text-hover: #ffef15;
     /*Color de Linea*/
     --color-linea: #303030;
-
 }
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* ✨ EL CÓDIGO ANTI-SALTOS ✨ */
-html {
-  scrollbar-gutter: stable;
-  /* ✨ NUEVO: Activa la animación suave de navegación */
-  scroll-behavior: smooth; 
-
-  /* Aumenta este valor. Prueba con 8rem, 10rem o 120px hasta que quede como en tu foto */
-  scroll-padding-top: 20px;
+html, body {
+    scrollbar-gutter: stable;
+    scroll-behavior: smooth; 
+    scroll-padding-top: 20px;
 }
 
 ::-webkit-scrollbar {
@@ -55,8 +50,6 @@ html {
     background-color: var(--color-primary)
 }
 
-/*Animacion del loop de logos de herramientas*/
-
 @keyframes infinite-scroll {
     from { transform: translateX(0); }
     to { transform: translateX(-50%); }
@@ -65,4 +58,13 @@ html {
 .animate-infinite-scroll {
     animation: infinite-scroll 60s linear infinite;
     width: max-content;
+}
+
+@keyframes console-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+.animate-console-blink {
+    animation: console-blink 1s step-end infinite;
 }

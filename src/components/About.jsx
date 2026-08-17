@@ -26,13 +26,6 @@ export default function About() {
         className="w-full max-w-7xl mx-auto px-6 lg:px-8 py-24"
         >
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="relative w-full aspect-square max-w-md mx-auto lg:mx-0 rounded-2xl overflow-hidden bg-surface border border-white/5">
-                <img
-            src="https://i.pinimg.com/736x/fe/2f/40/fe2f4092648b860f699dde4405112771.jpg"
-            alt="Nikcey Bada trabajando"
-            className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
-                />
-            </div>
 
             <div className="flex flex-col text-left">
                 <span className="text-primary text-sm font-semibold tracking-wider uppercase mb-4">
@@ -90,7 +83,15 @@ export default function About() {
                 </ul>
             </div>
             </div>
+            <div className="relative w-full aspect-square max-w-md mx-auto lg:mx-0 rounded-2xl overflow-hidden bg-surface border border-white/5">
+                <img
+            src="https://i.pinimg.com/736x/fe/2f/40/fe2f4092648b860f699dde4405112771.jpg"
+            alt="Nikcey Bada trabajando"
+            className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                />
+            </div>
         </div>
+        
       <div className="mt-8 pt-8 border-t border-white/5 overflow-hidden">
         <h3 className="text-center text-text-hover font-medium tracking-widest uppercase mb-12">
         Tecnologías y Habilidades Técnicas
