@@ -2,16 +2,16 @@ import React from "react";
 
 // 1. Tu lista de tecnologías (Fácil de actualizar)
 const techStack = [
-    { nombre: "Excel", icono: "/public/excel.svg" },
-    { nombre: "SQL", icono: "/public/sqlserver.svg" },
-    { nombre: "Python", icono: "/public/python.svg" },
-    { nombre: "Power BI", icono: "/public/powerbi.svg" },
-    { nombre: "Looker Studio", icono: "/public/looker.svg" },
-    { nombre: "N8N", icono: "/public/n8ncolor.svg" },
-    { nombre: "HTML", icono: "/public/html5.svg" },
-    { nombre: "CSS", icono: "/public/css.svg" },
-    { nombre: "Java", icono: "/public/java.svg" },
-    { nombre: "Javascript", icono: "/public/javascript.svg" },
+    { nombre: "Excel", icono: "/excel.svg" },
+    { nombre: "SQL", icono: "/sqlserver.svg" },
+    { nombre: "Python", icono: "/python.svg" },
+    { nombre: "Power BI", icono: "/powerbi.svg" },
+    { nombre: "Looker Studio", icono: "/looker.svg" },
+    { nombre: "N8N", icono: "/n8ncolor.svg" },
+    { nombre: "HTML", icono: "/html5.svg" },
+    { nombre: "CSS", icono: "/css.svg" },
+    { nombre: "Java", icono: "/java.svg" },
+    { nombre: "Javascript", icono: "/javascript.svg" },
     
 ];
 
