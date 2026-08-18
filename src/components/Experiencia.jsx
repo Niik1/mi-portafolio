@@ -51,10 +51,7 @@ export default function Experiencia() {
 
             return (
               <div key={exp.id} className="relative flex flex-col md:flex-row items-center w-full group">
-                {/* Indicador de la línea de tiempo */}
                 <div className="absolute top-1/2 left-6 md:left-1/2 w-4 h-4 rounded-full border-2 border-white/20 bg-background -translate-y-1/2 -translate-x-1/2 z-20 transition-all duration-500 group-hover:border-primary group-hover:bg-primary/20 group-hover:shadow-[0_0_15px_#ffef15]"></div>
-                
-                {/* Conector horizontal */}
                 <div 
                   className={`absolute top-1/2 -translate-y-1/2 w-10 md:w-16 h-[2px] bg-white/10 transition-colors duration-500 group-hover:bg-primary z-10
                     ${isLeft 
@@ -64,7 +61,6 @@ export default function Experiencia() {
                   `}
                 ></div>
 
-                {/* Tarjeta de contenido */}
                 <div className={`w-full md:w-1/2 pl-16 md:pl-0 relative z-20 
                     ${isLeft ? 'md:pr-16' : 'md:pl-16 md:ml-auto'}
                 `}>
@@ -81,8 +77,6 @@ export default function Experiencia() {
                     <h4 className="text-text-muted font-medium mb-4">
                       {exp.empresa}
                     </h4>
-                    
-                    {/* ✨ AQUÍ SE RENDERIZA LA LISTA DE DESCRIPCIONES */}
                     <ul className="text-white/60 text-sm leading-relaxed mb-6 space-y-2 list-disc list-inside">
                       {exp.descripcion.map((item, i) => (
                         <li key={i} className="pl-1">
@@ -90,8 +84,6 @@ export default function Experiencia() {
                         </li>
                       ))}
                     </ul>
-
-                    {/* Herramientas */}
                     <div className="flex flex-wrap gap-2 md:justify-start">
                       {exp.herramientas.map((herramienta, i) => (
                         <span key={i} className="px-3 py-1 text-xs font-medium bg-white/5 text-text-muted rounded-full border border-white/10 transition-colors group-hover:border-primary/30 group-hover:text-white">

@@ -1,4 +1,4 @@
-import NavbarPrueba from './components/NavbarPrueba';
+import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
 import Experiencia from './components/Experiencia';
@@ -9,10 +9,7 @@ import Footer from './components/Footer';
 export default function App() {
   return (
     <div className="bg-background text-text-main selection:bg-primary/30">  
-      <NavbarPrueba />
-      
-      {/* Envolvemos todo en main, dejando que cada componente (Hero, About, etc.)
-          maneje su propia altura y espaciado de forma independiente */}
+      <Navbar />
       <main> 
         <Hero />
         <About />
@@ -20,7 +17,6 @@ export default function App() {
         <Proyectos />
         <Certificados />
       </main>
-      
       <Footer />
     </div>
   );

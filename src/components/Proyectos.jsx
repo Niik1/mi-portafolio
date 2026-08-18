@@ -1,6 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
 
-// 1. Base de datos de tus proyectos
 const proyectos = [
     {
     id: 1,
@@ -37,7 +36,6 @@ const proyectos = [
   }
 ];
 
-// 2. Componente de la Tarjeta Interactiva
 const SpotlightCard = ({ proyecto, onClick }) => {
   const divRef = useRef(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -59,10 +57,8 @@ const SpotlightCard = ({ proyecto, onClick }) => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onClick={() => onClick(proyecto)}
-      // 1. Aumentamos la altura de h-[420px] a h-[520px] para ese formato vertical
       className="relative flex flex-col overflow-hidden rounded-2xl bg-surface border border-white/5 cursor-pointer group transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl h-[520px]"
     >
-      {/* Reflector (Spotlight) */}
       <div
         className="pointer-events-none absolute -inset-px z-20 transition-opacity duration-300 ease-in-out"
         style={{
@@ -70,8 +66,6 @@ const SpotlightCard = ({ proyecto, onClick }) => {
           background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, rgba(236, 236, 226, 0.2), transparent 30%)`,
         }}
       />
-
-      {/* Imagen Superior con efecto Zoom */}
       <div className="relative w-full h-56 overflow-hidden">
         
         <img 
@@ -81,11 +75,7 @@ const SpotlightCard = ({ proyecto, onClick }) => {
         />
         
       </div>
-
-      {/* Contenido de la tarjeta */}
       <div className="relative z-10 flex flex-col flex-grow p-7">
-        
-        {/* Categoría superior (Como en tu foto de referencia) */}
         <span className="inline-block w-max px-3 py-1 bg-white/5 border border-white/10 rounded text-white/60 font-mono text-xs font-bold tracking-wider uppercase mb-4">
           {proyecto.categoria}
         </span>
@@ -97,13 +87,10 @@ const SpotlightCard = ({ proyecto, onClick }) => {
         <p className="text-white/60 text-sm leading-relaxed mb-6 line-clamp-3">
           {proyecto.descripcionCorta}
         </p>
-
-        {/* Etiquetas redondas con transición de opacidad */}
         <div className="mt-auto flex flex-wrap gap-2">
           {proyecto.herramientas.map((herramienta, i) => (
             <span 
               key={i} 
-              // 3. Usamos rounded-full y py-1.5 px-4 para darles la forma de píldora
               className="px-4 py-1.5 text-xs font-medium rounded-full border border-white/10 transition-all duration-300 text-white/40 group-hover:text-white/80 group-hover:border-white/20 bg-transparent"
             >
               {herramienta}
@@ -114,27 +101,19 @@ const SpotlightCard = ({ proyecto, onClick }) => {
     </div>
   );
 };
-// 3. Componente de la Ventana Modal de Proyectos
 const ProjectModal = ({ proyecto, onClose }) => {
-  // 1. Estado para manejar la animación de entrada/salida
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // 2. Solo ocultamos el scroll nativamente
     document.body.style.overflow = 'hidden';
-    
-    // 3. Activamos la animación un instante después de renderizar
     requestAnimationFrame(() => setIsVisible(true));
     
     return () => {
       document.body.style.overflow = 'unset';
     };
   }, []);
-
-  // 4. Función especial para cerrar con animación
   const handleClose = () => {
     setIsVisible(false);
-    // Esperamos 300ms (lo que dura la transición) antes de desmontar el componente
     setTimeout(onClose, 300); 
   };
 
@@ -142,19 +121,14 @@ const ProjectModal = ({ proyecto, onClose }) => {
 
   return (
     <div 
-      // Efecto Cristal Esmerilado (Blur) progresivo
       className={`fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm transition-opacity duration-300 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
-      // IMPORTANTE: Cambiamos onClose por handleClose para que haya animación al cerrar haciendo clic afuera
       onClick={handleClose} 
     >
       <div 
-        // Efecto Scale-in desde el centro hacia arriba
         className={`relative w-full max-w-3xl bg-surface rounded-2xl overflow-hidden shadow-2xl border border-white/10 flex flex-col max-h-[90vh] transition-all duration-500 ease-out transform ${isVisible ? 'scale-100 translate-y-0' : 'scale-95 translate-y-4'}`}
         onClick={(e) => e.stopPropagation()} 
       >
-        {/* Botón de cerrar (X) */}
         <button 
-          // IMPORTANTE: Cambiamos onClose por handleClose aquí también
           onClick={handleClose}
           className="absolute top-3 right-3 sm:top-4 sm:right-4 z-50 w-8 h-8 flex items-center justify-center rounded-full bg-black/50 text-white/70 hover:text-white hover:bg-black transition-colors"
         >
@@ -162,8 +136,6 @@ const ProjectModal = ({ proyecto, onClose }) => {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
-
-        {/* Imagen: Delgada en celular (h-36), amplia en PC (h-72) */}
         <div className="w-full h-60 sm:h-90 relative shrink-0">
           <img 
             src={proyecto.imagen} 
@@ -171,8 +143,6 @@ const ProjectModal = ({ proyecto, onClose }) => {
             className="w-full h-full object-cover"
           />
         </div>
-
-        {/* Contenedor de texto optimizado */}
         <div className="p-4 sm:p-8 overflow-y-auto flex-1 flex flex-col">
           
           <div className="flex items-center gap-1.5 text-primary text-[10px] sm:text-xs font-semibold tracking-wider uppercase mb-2 sm:mb-3 shrink-0">
@@ -216,13 +186,10 @@ const ProjectModal = ({ proyecto, onClose }) => {
     </div>
   );
 };
-
-// 4. Componente Principal de la Sección
 export default function Proyectos() {
   const [selectedProject, setSelectedProject] = useState(null);
 
   return (
-    // CORRECCIÓN 2: Cambiado 'py-24' por 'pt-12 pb-24' para equilibrar los márgenes
     <section id="proyectos" className="w-full max-w-7xl mx-auto px-6 lg:px-8 pt-30 pb-24 relative">
       
       <div className="mb-16">

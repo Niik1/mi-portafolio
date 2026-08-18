@@ -1,108 +1,158 @@
-export default function Navbar() {
-  return (
-    <div className="fixed top-0 left-0 right-0 z-50 px-6 py-6 bg-transparent">
-      <div
-        className="max-w-4xl mx-auto border border-white/10 rounded-full px-6 py-3"
-        style={{
-          background: "rgba(10, 11, 20, 0.9)",
-          backdropFilter: "blur(40px)",
-          WebkitBackdropFilter: "blur(40px)",
-        }}
-      >
-        <div className="flex items-center justify-between">
-          <div className="flex items-center">
-            <span className="text-lg font-semibold tracking-tight text-white font-sans">
-              Nikcey Bada
-            </span>
-          </div>
+import { useState, useEffect } from 'react';
 
-          <ul className="hidden md:flex items-center gap-1 text-sm font-medium text-white/60">
-            <li>
-              <a
-                href="#"
-                className="hover:text-white transition-colors duration-300 px-4 py-2 rounded-full hover:bg-white/5 font-sans"
-              >
-                Inicio
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="hover:text-white transition-colors duration-300 px-4 py-2 rounded-full hover:bg-white/5 font-sans"
-              >
-                Dashboard PL-300
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="hover:text-white transition-colors duration-300 px-4 py-2 rounded-full hover:bg-white/5 font-sans"
-              >
-                Automatizaciones
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="hover:text-white transition-colors duration-300 px-4 py-2 rounded-full hover:bg-white/5 font-sans"
-              >
-                Contacto
-              </a>
-            </li>
-          </ul>
+export default function NavbarPrueba() {
+    const [isScrolled, setIsScrolled] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
+    const [activeSection, setActiveSection] = useState('inicio'); // Por defecto en inicio
 
-          <div className="flex items-center gap-2">
-            <button
-              className="bg-white/[0.02] hover:bg-white/10 p-2 rounded-full transition-all duration-300 border border-white/5 cursor-pointer"
-              aria-label="Cuenta"
+    // 1. Control del fondo transparente/oscuro del Navbar
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 20) {
+                setIsScrolled(true);
+            } else {
+                setIsScrolled(false);
+            }
+        };
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    // 2. Bloqueo de scroll para el menú móvil
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+        return () => {
+            document.body.style.overflow = 'unset';
+        };
+    }, [isOpen]);
+
+    // ✨ 3. SCROLL SPY A PRUEBA DE BALAS ✨
+    useEffect(() => {
+        const handleScrollSpy = () => {
+            // Buscamos todas las secciones
+            const sections = document.querySelectorAll('section[id]');
+            let currentSection = 'inicio'; // Valor por defecto
+
+            sections.forEach((section) => {
+                // Obtenemos a qué distancia de la parte superior de la página está esta sección
+                const sectionTop = section.offsetTop;
+                
+                // Si la barra de scroll ha bajado hasta esta sección 
+                // (le restamos 300px para que el color cambie un poquito antes de que el título toque arriba)
+                if (window.scrollY >= sectionTop - 300) {
+                    currentSection = section.id;
+                }
+            });
+
+            setActiveSection(currentSection);
+        };
+
+        // Escuchamos la barra de scroll de toda la ventana
+        window.addEventListener('scroll', handleScrollSpy);
+        
+        // Le damos 100 milisegundos a React para que pinte todo y ejecutamos una vez
+        setTimeout(handleScrollSpy, 100);
+
+        return () => window.removeEventListener('scroll', handleScrollSpy);
+    }, []);
+
+    const mobileLinks = [
+        { num: '01', id: 'inicio', name: 'Inicio', href: '#inicio' },
+        { num: '02', id: 'sobremi', name: 'Sobre Mí', href: '#sobremi' },
+        { num: '03', id: 'experiencia', name: 'Experiencia', href: '#experiencia' },
+        { num: '04', id: 'proyectos', name: 'Proyectos', href: '#proyectos' },
+        { num: '05', id: 'certificados', name: 'Certificados', href: '#certificados' },
+        { num: '06', id: 'contacto', name: 'Contacto', href: '#contacto' },
+    ];
+
+    const getLinkClasses = (sectionId) => {
+        const isActive = activeSection === sectionId;
+        return `transition-all duration-300 font-geist inline-block ${
+            isActive 
+                ? 'text-primary scale-110 font-bold' 
+                : 'text-white/80 hover:text-text-hover hover:scale-105'
+        }`;
+    };
+
+    return (
+        <>
+            <header 
+                className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out ${
+                    isScrolled 
+                        ? 'bg-background/80 backdrop-blur-md shadow-lg' 
+                        : 'bg-transparent' 
+                }`}
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="w-4 h-4 stroke-[1.5] text-white/60"
-              >
-                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
-                <circle cx="12" cy="7" r="4" />
-              </svg>
-            </button>
-            <button
-              className=" bg-white/[0.02] relative hover:bg-white/10 p-2 rounded-full transition-all duration-300 border border-white/5
-              cursor-pointer"
-              aria-label="Notificaciones"
+                <div className="mx-auto max-w-7xl px-6 lg:px-8">
+                    <div className={`flex items-center justify-between transition-all duration-300 ${isScrolled ? 'py-5' : 'py-5'}`}>                
+                        
+                        <a href="#inicio" className="flex items-center font-serif text-2xl font-bold relative z-50">
+                            <span className="text-white">Nikcey</span>
+                            <span className="w-[14px] h-[3px] bg-white ml-1 self-end mb-[4px] animate-console-blink "></span>
+                        </a>
+                        <nav className="hidden md:flex items-center gap-12 text-sm">
+                            <a href="#inicio" className={getLinkClasses('inicio')}>Inicio</a>
+                            <a href="#sobremi" className={getLinkClasses('sobremi')}>Sobre mí</a>
+                            <a href="#experiencia" className={getLinkClasses('experiencia')}>Experiencia</a>
+                            <a href="#proyectos" className={getLinkClasses('proyectos')}>Proyectos</a>
+                            <a href="#certificados" className={getLinkClasses('certificados')}>Certificados</a>
+                        </nav>
+                        <div className="hidden md:flex items-center gap-3">
+                            <a href="#contacto" className="inline-flex items-center rounded-md border-gradient before:rounded-md bg-primary/100 px-4 py-2.5 text-sm text-black/90 font-medium hover:bg-primary-hover/100 transition font-geist hover:scale-105">
+                                Contactame
+                            </a>
+                        </div>
+                        <button 
+                            onClick={() => setIsOpen(true)}
+                            className="md:hidden flex items-center justify-center p-2 text-white hover:text-primary transition-colors"
+                        >
+                            <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                            </svg>
+                        </button>
+                    </div>
+                    <span className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-linea/80 from-transparent via-venus-pink/100 to-transparent"></span>
+                </div>
+            </header>
+            <div 
+                className={`fixed inset-0 z-[100] bg-[#0a0a0a] transition-opacity duration-500 md:hidden ${
+                    isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+                }`}
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="w-4 h-4 stroke-[1.5] text-white/60"
-              >
-                <rect width="8" height="4" x="8" y="2" rx="1" ry="1" />
-                <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
-                <path d="M12 11h4" />
-                <path d="M12 16h4" />
-                <path d="M8 11h.01" />
-                <path d="M8 16h.01" />
-              </svg>
-              <span className="absolute -top-1 -right-1 w-4 h-4 bg-emerald-500 text-white text-xs rounded-full flex items-center justify-center font-medium font-sans">
-                1
-              </span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+                <button 
+                    onClick={() => setIsOpen(false)}
+                    className="absolute top-5 right-6 w-11 h-11 border border-white/20 rounded-full flex items-center justify-center text-white/80 hover:text-white hover:border-white transition-all"
+                >
+                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+                <div className="flex flex-col items-center justify-center h-full space-y-8">
+                    {mobileLinks.map((link) => {
+                        const isActive = activeSection === link.id;
+                        
+                        return (
+                            <a
+                                key={link.num}
+                                href={link.href}
+                                onClick={() => setIsOpen(false)}
+                                className={`flex items-center gap-5 group transition-all duration-300 ${isActive ? 'scale-110' : ''}`}
+                            >
+                                <span className={`font-mono text-sm transition-opacity ${isActive ? 'text-primary opacity-100 font-bold' : 'text-primary opacity-70 group-hover:opacity-100'}`}>
+                                    {link.num}
+                                </span>
+                                <span className={`text-3xl font-geist tracking-wide transition-colors ${isActive ? 'text-primary font-black' : 'text-white/90 hover:text-white font-bold'}`}>
+                                    {link.name}
+                                </span>
+                            </a>
+                        );
+                    })}
+                </div>
+            </div>
+        </>
+    );
 }

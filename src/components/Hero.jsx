@@ -1,13 +1,10 @@
 export default function Hero() {
     return (
-        // ✨ CORRECCIÓN 1: Cambiamos 'pb-12' por 'pb-28 lg:pb-12'. 
-        // Esto da mucho espacio abajo en celulares, pero mantiene el diseño igual en PC.
         <section id="inicio" className="relative w-full min-h-screen flex items-center justify-center pt-24 pb-28 lg:pb-12 overflow-hidden">
             
             <div className="w-full max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                     
-                    {/* COLUMNA IZQUIERDA: Textos */}
                     <div className="flex flex-col items-start text-left">
                         <span className="text-primary text-sm font-semibold tracking-[0.2em] uppercase mb-6">
                             Hola, soy Nikcey Bada Gutierrez
@@ -56,12 +53,10 @@ export default function Hero() {
                         </div>
                         
                         <div className="mt-12 flex items-center gap-6 border-t border-white/5 pt-8 w-full max-w-md">
-                            {/* GitHub */}
                             <a
                                 href="https://github.com/Niik1"
                                 target="_blank"
                                 rel="noreferrer"
-                                // ✨ Clases actualizadas para el efecto hover
                                 className="text-text-muted hover:text-primary transition-all duration-300 transform hover:-translate-y-1 hover:scale-110"
                                 aria-label="GitHub"
                             >
@@ -70,13 +65,10 @@ export default function Hero() {
                                     <path d="M9 18c-4.51 2-5-2-7-2" />
                                 </svg>
                             </a>
-
-                            {/* LinkedIn */}
                             <a
                                 href="https://linkedin.com/in/nikcey-bada-gutierrez-018972258"
                                 target="_blank"
                                 rel="noreferrer"
-                                // ✨ Clases actualizadas para el efecto hover
                                 className="text-text-muted hover:text-primary transition-all duration-300 transform hover:-translate-y-1 hover:scale-110"
                                 aria-label="LinkedIn"
                             >
@@ -88,9 +80,6 @@ export default function Hero() {
                             </a>
                         </div>
                     </div>
-
-                    {/* ✨ CORRECCIÓN 2: Agregamos 'mb-10 lg:mb-0' al contenedor de la imagen */}
-                    {/* Esto asegura que la imagen empuje el espacio hacia arriba en móviles */}
                     <div className="relative w-full aspect-square max-w-md mx-auto lg:ml-auto mb-10 lg:mb-0">
                         <div className="absolute inset-0 bg-resplandor/15 blur-[100px] rounded-full scale-110"></div>
                         <div className="relative z-10 w-full h-full rounded-3xl overflow-hidden border border-white/10 bg-surface">

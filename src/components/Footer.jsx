@@ -9,8 +9,6 @@ export default function Footer() {
             © 2026 Nikcey Bada Gutierrez. Todos los derechos reservados.
             </p>
             <div className="flex items-center gap-6">
-                
-                {/* LinkedIn */}
                 <a 
                     href="https://linkedin.com/in/nikcey-bada-gutierrez-018972258" 
                     target="_blank" 
@@ -24,8 +22,6 @@ export default function Footer() {
                         <circle cx="4" cy="4" r="2" />
                     </svg>
                 </a>
-
-                {/* GitHub */}
                 <a 
                     href="https://github.com/Niik1" 
                     target="_blank" 
@@ -38,8 +34,6 @@ export default function Footer() {
                         <path d="M9 18c-4.51 2-5-2-7-2" />
                     </svg>
                 </a>
-
-                {/* Email (Icono de sobre a juego) */}
                 <a 
                     href="mailto:nikcey182002@gmail.com" 
                     className="text-white/40 hover:text-primary transition-all duration-300 transform hover:-translate-y-1 hover:scale-110" 
