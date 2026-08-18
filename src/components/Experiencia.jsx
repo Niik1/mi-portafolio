@@ -3,19 +3,30 @@ import React from 'react';
 const experiencias = [
   {
     id: 1,
-    rol: "Analista de Datos y Automatizaciones de Procesos",
-    empresa: "SUNAT",
+    rol: "Analista de Business Intelligence (BI) y Automatización",
+    empresa: "Importaciones Game Center Latam S.A.C - Lima",
     fecha: "Agosto 2025 - Junio 2026",
-    descripcion: "Evaluación y control de obligaciones tributarias y categorías de renta para asegurar el cumplimiento normativo a nivel nacional.",
-    herramientas: ["Legislación Tributaria", "Análisis de Datos", "Gestión de Procesos"]
+    descripcion: [
+      "Implementé procesos ETL para la recolección, limpieza y transformación de datos desde múltiples fuentes, garantizando la calidad y estructura de la información.",
+      "Diseñé dashboards interactivos en Power BI y Looker Studio para el monitoreo de KPIs, identificando patrones de ventas que optimizaron la gestión de inventarios.",
+      "Desarrolle un sistema automatizado de precios de publicacion segun reglas internas de las diferentes plataformas e-commerce (Mercado Libre, Falabella, Ripley, Yape, Rappi).",
+      "Optimicé flujos operativos mediante reportes automatizados, reduciendo las tareas manuales y errores administrativos.",
+      "Desarrollé un generador automatizado de catálogos en Python para clientes mayoristas, reduciendo drásticamente las tareas manuales y tiempos operativos."
+    ],
+    herramientas: ["Power BI", "Python", "Looker Studio", "ETL", "SQL", "Análisis de Datos", "Automatización"]
   },
   {
     id: 2,
-    rol: "Desarrollador de Sistema Web (IA)",
-    empresa: "Chic Chemin (Miraflores)",
-    fecha: "Abril 2026",
-    descripcion: "Formulación y desarrollo de un sistema web basado en IA para el control automatizado de inventarios. Se eliminaron tareas manuales y se optimizó la gestión de stock.",
-    herramientas: ["IA", "Automatización", "Bases de Datos", "Python"]
+    rol: "Desarrollador de Sistema Web",
+    empresa: "Nanas & Amas Perú - Trujillo",
+    fecha: "Agosto 2024 - Diciembre 2024",
+    descripcion: [
+      "Colaboré en la migración de un sistema de escritorio hacia una plataforma web moderna, trabajando en equipo para centralizar la gestión operativa.",
+      "Contribui en el diseño e implementación de las interfaces de usuario en el frontend utilizando React, creando una experiencia visual e interactiva fluida para la búsqueda de perfiles.",
+      "Participé en la construcción del proyecto desde cero, implementando el modelado relacional en PostgreSQL y la API en Node.js.",
+      "Contribuí en la puesta en producción del sistema, ejecutando resoluciones de errores (bug fixing) y optimizaciones continuas durante la fase de mantenimiento."
+    ],
+    herramientas: ["React", "Node js", "PostgresSQL", "Diseño UI/UX", "Trabajo en Equipo"]
   },
 ];
 
@@ -31,6 +42,7 @@ export default function Experiencia() {
           Mi Experiencia
         </h2>
       </div>
+
       <div className="relative w-full">  
         <div className="absolute top-0 bottom-0 left-6 md:left-1/2 w-[2px] bg-white/10 -translate-x-1/2 z-0"></div>
         <div className="flex flex-col gap-12 md:gap-8">
@@ -39,7 +51,10 @@ export default function Experiencia() {
 
             return (
               <div key={exp.id} className="relative flex flex-col md:flex-row items-center w-full group">
+                {/* Indicador de la línea de tiempo */}
                 <div className="absolute top-1/2 left-6 md:left-1/2 w-4 h-4 rounded-full border-2 border-white/20 bg-background -translate-y-1/2 -translate-x-1/2 z-20 transition-all duration-500 group-hover:border-primary group-hover:bg-primary/20 group-hover:shadow-[0_0_15px_#ffef15]"></div>
+                
+                {/* Conector horizontal */}
                 <div 
                   className={`absolute top-1/2 -translate-y-1/2 w-10 md:w-16 h-[2px] bg-white/10 transition-colors duration-500 group-hover:bg-primary z-10
                     ${isLeft 
@@ -48,13 +63,12 @@ export default function Experiencia() {
                     }
                   `}
                 ></div>
+
+                {/* Tarjeta de contenido */}
                 <div className={`w-full md:w-1/2 pl-16 md:pl-0 relative z-20 
                     ${isLeft ? 'md:pr-16' : 'md:pl-16 md:ml-auto'}
                 `}>
-                  
-                  <div className={`p-6 rounded-2xl bg-surface border border-white/5 transition-all duration-500 hover:-translate-y-1 hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/5
-                      ${isLeft ? 'md:text-left' : 'md:text-left'}
-                  `}>
+                  <div className={`p-6 rounded-2xl bg-surface border border-white/5 transition-all duration-500 hover:-translate-y-1 hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/5 md:text-left`}>
                     
                     <span className="text-primary/80 font-mono text-sm tracking-wide mb-2 block">
                       {exp.fecha}
@@ -68,11 +82,17 @@ export default function Experiencia() {
                       {exp.empresa}
                     </h4>
                     
-                    <p className="text-white/60 text-sm leading-relaxed mb-6">
-                      {exp.descripcion}
-                    </p>
+                    {/* ✨ AQUÍ SE RENDERIZA LA LISTA DE DESCRIPCIONES */}
+                    <ul className="text-white/60 text-sm leading-relaxed mb-6 space-y-2 list-disc list-inside">
+                      {exp.descripcion.map((item, i) => (
+                        <li key={i} className="pl-1">
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
 
-                    <div className={`flex flex-wrap gap-2 ${isLeft ? 'md:justify-end' : 'md:justify-start'}`}>
+                    {/* Herramientas */}
+                    <div className="flex flex-wrap gap-2 md:justify-start">
                       {exp.herramientas.map((herramienta, i) => (
                         <span key={i} className="px-3 py-1 text-xs font-medium bg-white/5 text-text-muted rounded-full border border-white/10 transition-colors group-hover:border-primary/30 group-hover:text-white">
                           {herramienta}

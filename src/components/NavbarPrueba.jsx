@@ -74,7 +74,7 @@ export default function NavbarPrueba() {
                 <div className="mx-auto max-w-7xl px-6 lg:px-8">
                     <div className={`flex items-center justify-between transition-all duration-300 ${isScrolled ? 'py-5' : 'py-5'}`}>                
                         
-                        <a href="#inicio" className="flex items-center font-serif text-2xl font-bold relative z-50">
+                        <a href="#" className="flex items-center font-serif text-2xl font-bold relative z-50">
                             <span className="text-white">Nikcey</span>
                             <span className="w-[14px] h-[3px] bg-white ml-1 self-end mb-[4px] animate-console-blink "></span>
                         </a>

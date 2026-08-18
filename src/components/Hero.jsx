@@ -40,8 +40,11 @@ export default function Hero() {
                 </a>
 
                 <a
-                href="#contacto"
-                className="inline-flex items-center gap-2 border border-white/10 hover:bg-white/5 text-text-main px-8 py-3.5 rounded-md font-medium transition-colors"
+                href="/CV_NIKCEY_BADA_GUTIERREZ.pdf"
+                target="_blank" 
+                rel="noopener noreferrer"
+                // Aquí mantienes todas las clases de Tailwind que ya tenías para que se vea igual
+                className="px-6 py-3 border border-white/20 text-white rounded-md hover:bg-white/10 transition-colors font-geist font-medium flex items-center justify-center gap-2"
                 >
                 Descargar CV
                 </a>
