@@ -3,7 +3,9 @@ import { useState, useEffect } from 'react';
 export default function NavbarPrueba() {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
-    const [activeSection, setActiveSection] = useState('');
+    const [activeSection, setActiveSection] = useState('inicio'); // Por defecto en inicio
+
+    // 1. Control del fondo transparente/oscuro del Navbar
     useEffect(() => {
         const handleScroll = () => {
             if (window.scrollY > 20) {
@@ -15,6 +17,8 @@ export default function NavbarPrueba() {
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
+
+    // 2. Bloqueo de scroll para el menú móvil
     useEffect(() => {
         if (isOpen) {
             document.body.style.overflow = 'hidden';
@@ -25,34 +29,46 @@ export default function NavbarPrueba() {
             document.body.style.overflow = 'unset';
         };
     }, [isOpen]);
+
+    // ✨ 3. SCROLL SPY A PRUEBA DE BALAS ✨
     useEffect(() => {
-        const sections = document.querySelectorAll('section[id]');
-        
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        setActiveSection(entry.target.id);
-                    }
-                });
-            },
-            { threshold: 0.5 }
-        );
+        const handleScrollSpy = () => {
+            // Buscamos todas las secciones
+            const sections = document.querySelectorAll('section[id]');
+            let currentSection = 'inicio'; // Valor por defecto
 
-        sections.forEach((section) => observer.observe(section));
+            sections.forEach((section) => {
+                // Obtenemos a qué distancia de la parte superior de la página está esta sección
+                const sectionTop = section.offsetTop;
+                
+                // Si la barra de scroll ha bajado hasta esta sección 
+                // (le restamos 300px para que el color cambie un poquito antes de que el título toque arriba)
+                if (window.scrollY >= sectionTop - 300) {
+                    currentSection = section.id;
+                }
+            });
 
-        return () => {
-            sections.forEach((section) => observer.unobserve(section));
+            setActiveSection(currentSection);
         };
+
+        // Escuchamos la barra de scroll de toda la ventana
+        window.addEventListener('scroll', handleScrollSpy);
+        
+        // Le damos 100 milisegundos a React para que pinte todo y ejecutamos una vez
+        setTimeout(handleScrollSpy, 100);
+
+        return () => window.removeEventListener('scroll', handleScrollSpy);
     }, []);
+
     const mobileLinks = [
-        { num: '01', id: 'inicio', name: 'Inicio', href: '#' },
+        { num: '01', id: 'inicio', name: 'Inicio', href: '#inicio' },
         { num: '02', id: 'sobremi', name: 'Sobre Mí', href: '#sobremi' },
         { num: '03', id: 'experiencia', name: 'Experiencia', href: '#experiencia' },
         { num: '04', id: 'proyectos', name: 'Proyectos', href: '#proyectos' },
         { num: '05', id: 'certificados', name: 'Certificados', href: '#certificados' },
         { num: '06', id: 'contacto', name: 'Contacto', href: '#contacto' },
     ];
+
     const getLinkClasses = (sectionId) => {
         const isActive = activeSection === sectionId;
         return `transition-all duration-300 font-geist inline-block ${
@@ -74,12 +90,12 @@ export default function NavbarPrueba() {
                 <div className="mx-auto max-w-7xl px-6 lg:px-8">
                     <div className={`flex items-center justify-between transition-all duration-300 ${isScrolled ? 'py-5' : 'py-5'}`}>                
                         
-                        <a href="#" className="flex items-center font-serif text-2xl font-bold relative z-50">
+                        <a href="#inicio" className="flex items-center font-serif text-2xl font-bold relative z-50">
                             <span className="text-white">Nikcey</span>
                             <span className="w-[14px] h-[3px] bg-white ml-1 self-end mb-[4px] animate-console-blink "></span>
                         </a>
                         <nav className="hidden md:flex items-center gap-12 text-sm">
-                            <a href="#" className={getLinkClasses('inicio')}>Inicio</a>
+                            <a href="#inicio" className={getLinkClasses('inicio')}>Inicio</a>
                             <a href="#sobremi" className={getLinkClasses('sobremi')}>Sobre mí</a>
                             <a href="#experiencia" className={getLinkClasses('experiencia')}>Experiencia</a>
                             <a href="#proyectos" className={getLinkClasses('proyectos')}>Proyectos</a>
